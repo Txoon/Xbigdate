@@ -5,15 +5,15 @@ class AcGameMenu {
 <div class="ac-game-menu">
     <div class="ac-game-menu-field">
         <div class="ac-game-menu-field-item ac-game-menu-field-item-single_mode">
-            单人模式
+            简单模式
         </div>
         <br>
         <div class="ac-game-menu-field-item ac-game-menu-field-item-multi_mode">
-            多人模式
+            困难模式
         </div>
         <br>
         <div class="ac-game-menu-field-item ac-game-menu-field-item-settings">
-            设置
+            炼狱模式
         </div>
     </div>
 </div>
@@ -35,13 +35,18 @@ class AcGameMenu {
         let outer = this;
         this.$single_mode.click(function() {
             outer.hide();
+            outer.root.playground = new AcGamePlayground(outer.root, 1);
             outer.root.playground.show();
         });
         this.$multi_mode.click(function() {
-
+            outer.hide();
+            outer.root.playground = new AcGamePlayground(outer.root, 2);
+            outer.root.playground.show();
         });
         this.$settings.click(function() {
-
+            outer.hide();
+            outer.root.playground = new AcGamePlayground(outer.root, 3);
+            outer.root.playground.show();
         });
     }
 

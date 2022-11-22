@@ -128,11 +128,26 @@ class Player extends AcGameObject {
         this.sleep += this.timedelta / 1000;
         if(!this.is_me && this.sleep > 4 && Math.random() < 1 / 180.0)
         {
+            if(this.playground.model == 1)
+            {
+                let goal = this.playground.players[Math.floor(Math.random() * this.playground.players.length)];
+                 while(goal == this)
+                    goal = this.playground.players[Math.floor(Math.random() * this.playground.players.length)];
+                 this.shoot_fireball(goal.x, goal.y);
+            }
+            else if(this.playground.model == 2)
+            {
+                let goal = this.playground.players[Math.floor(Math.random() * this.playground.players.length / 3)];
+                while(goal == this)
+                    goal = this.playground.players[Math.floor(Math.random() * this.playground.players.length / 3)];
+                this.shoot_fireball(goal.x, goal.y);
+            }
+            else if(this.playground.model == 3)
+            {
+                let goal = this.playground.players[0];
+                this.shoot_fireball(goal.x, goal.y);
+            }
 
-            let goal = this.playground.players[Math.floor(Math.random() * this.playground.players.length)];
-            while(goal == this)
-                goal = this.playground.players[Math.floor(Math.random() * this.playground.players.length)];
-            this.shoot_fireball(goal.x, goal.y);
         }
         if(this.damage_speed > 10)
         {
