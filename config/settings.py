@@ -39,7 +39,10 @@ APP_CODE = get_env_or_raise('BKPAAS_APP_ID')
 SECRET_KEY = get_env_or_raise('BKPAAS_APP_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -139,9 +142,22 @@ USE_TZ = True
 
 #STATIC_ROOT = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = 'static'    # DEBUG=False新增行
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, '/static/')    # 'static' 改为 '/static/'
+# ]
+#
+# STATIC_URL = '/static/'
+
+
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # 原来静态
+
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
 
